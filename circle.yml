@@ -38,6 +38,8 @@ jobs:
           at: ~/
       - run: pwd
       - run: ls -la .
+      - run: ls -la ~
+      - run: ls -la /
 
 workflows:
   build:
