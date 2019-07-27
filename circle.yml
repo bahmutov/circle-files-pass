@@ -24,11 +24,11 @@ jobs:
       - run: pwd
       - run: ls -la .
       # add another file
-      - run: echo "Job node index $CIRCLE_NODE_INDEX" > foo.json
+      - run: echo "Job node index $CIRCLE_NODE_INDEX" > foo-$CIRCLE_NODE_INDEX.json
       - persist_to_workspace:
           root: ~/
           paths:
-          - project/foo.json
+          - project/*.json
       - run: ls -la .
 
   third:
