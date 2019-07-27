@@ -18,6 +18,7 @@ jobs:
 
   second:
     executor: cypress/base-10
+    parallelism: 3
     steps:
       - attach_workspace:
           at: ~/
