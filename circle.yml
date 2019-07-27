@@ -26,9 +26,10 @@ jobs:
       # add another file
       - run: echo "Job node index $CIRCLE_NODE_INDEX" > foo.json
       - persist_to_workspace:
-          root: ~/project
+          root: .
           paths:
           - foo.json
+      - run: ls -la .
 
   third:
     executor: cypress/base-10
