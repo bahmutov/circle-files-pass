@@ -23,6 +23,20 @@ jobs:
           at: ~/
       - run: pwd
       - run: ls -la .
+      # add another file
+      - run: echo "Job node index $CIRCLE_NODE_INDEX" > foo.json
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+          - foo.json
+
+  third:
+    executor: cypress/base-10
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: pwd
+      - run: ls -la .
 
 workflows:
   build:
@@ -31,6 +45,9 @@ workflows:
       - second:
           requires:
             - first
+      - third:
+          requires:
+            - second
 
 #   second:
 #     executor: cypress/base-10
