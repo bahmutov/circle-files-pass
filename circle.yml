@@ -16,10 +16,21 @@ jobs:
           paths:
           - project
 
+  second:
+    executor: cypress/base-10
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: pwd
+      - run: ls -la .
+
 workflows:
   build:
     jobs:
       - first
+      - second:
+          requires:
+            - first
 
 #   second:
 #     executor: cypress/base-10
